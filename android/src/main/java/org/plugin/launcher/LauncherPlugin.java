@@ -3,6 +3,7 @@ package org.plugin.launcher;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
@@ -64,6 +65,19 @@ public class LauncherPlugin implements FlutterPlugin, MethodCallHandler {
                 context.startActivity(intent);
                 result.success("1");
             }
+        } else if (call.method.equals("isInstallJD")) {
+            PackageManager manager = getApplication().getPackageManager();
+            try {
+                String packageName = "com.jingdong.app.mall";
+                PackageInfo info = manager.getPackageInfo(packageName, PackageManager.GET_GIDS);
+                if (info != null) {
+                    result.success("1");
+                    return;
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            result.success("0");
         } else {
             result.notImplemented();
         }

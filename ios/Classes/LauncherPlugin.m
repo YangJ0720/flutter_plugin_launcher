@@ -26,6 +26,12 @@
           value = @"1";
       }
       result(value);
+  } else if ([@"isInstallJD" isEqualToString:call.method]) {
+    NSString * value = @"0";
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"openApp.jdMobile://"]]) {
+        value = @"1";
+    }
+    result(value);
   } else {
     result(FlutterMethodNotImplemented);
   }

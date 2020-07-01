@@ -12,4 +12,8 @@ class Launcher {
   static Future<String> get launcherWX async {
     return await _channel.invokeMethod('launcherWX');
   }
+
+  static Future<String> get isInstallJD async {
+    return await _channel.invokeMethod('isInstallJD');
+  }
 }

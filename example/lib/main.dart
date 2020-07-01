@@ -35,7 +35,15 @@ class _MyAppState extends State<MyApp> {
                   });
                 },
                 child: Text('launcherWX'),
-              )
+              ),
+              OutlineButton(
+                onPressed: () {
+                  Launcher.isInstallJD.then((value) {
+                    print('isInstallJD -> $value');
+                  });
+                },
+                child: Text('isInstallJD'),
+              ),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
